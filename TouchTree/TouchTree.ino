@@ -8,18 +8,18 @@ Adafruit_MPR121 cap = Adafruit_MPR121();
 
 
 uint8_t NoteTable[12] = {    // Table of notes to play
-  0x1E,                      // Ornament 0 - Hex Note
-  0x1E,                      // Ornament 1
-  0x1E,
-  0x1E,
-  0x1E,
-  0x1E,
-  0x1E,
-  0x1E,
-  0x1E,
-  0x1E,
-  0x1E,
-  0x1E                        // Ornament 11  
+  0x10,                      // Ornament 0 - Hex Note
+  0x11,                      // Ornament 1
+  0x12,
+  0x13,
+  0x14,
+  0x15,
+  0x16,
+  0x17,
+  0x18,
+  0x19,
+  0x1A,
+  0x1B                        // Ornament 11  
 };   
 
 
