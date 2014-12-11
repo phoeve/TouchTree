@@ -43,6 +43,7 @@ void setup() {
     while (1);
   }
 
+  cap.setThreshholds(0x41, 0x42);   // Default touch 0x41 and release 0x42
 }
 
 //  plays a MIDI note.  Doesn't check to see that
