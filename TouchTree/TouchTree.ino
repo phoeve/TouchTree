@@ -33,27 +33,16 @@ uint16_t currtouched = 0;
 
 
 void setup() {
-#ifdef DEBUG
-  Serial.begin(9600);
-  Serial.println("Adafruit MPR121 Capacitive Touch sensor test");
-#else
   Serial.begin(31250);
-#endif
 
   //Serial.println("Adafruit MPR121 Capacitive Touch sensor test"); 
   
   // Default address is 0x5A, if tied to 3.3V its 0x5B
   // If tied to SDA its 0x5C and if SCL then 0x5D
   if (!cap.begin(0x5A)) {
-#ifdef DEBUG
-    Serial.println("MPR121 not found, check wiring?");
-#endif
     while (1);
   }
 
-#ifdef DEBUG
-  Serial.println("MPR121 found!");
-#endif
 }
 
 //  plays a MIDI note.  Doesn't check to see that
@@ -72,23 +61,15 @@ void loop() {
   for (uint8_t i=0; i<12; i++) {
     // it if *is* touched and *wasnt* touched before, alert!
     if ((currtouched & _BV(i)) && !(lasttouched & _BV(i)) ) {
-#ifdef DEBUG
-      Serial.print(i); Serial.println(" touched");
-#else
         // Play Touch Note
       noteOn(0x90, NoteTable[i], 0x45);  //Note on channel 1 (0x90), some note value (note), middle velocity (0x45):
       delay(100);
-#endif
     }
     // if it *was* touched and now *isnt*, alert!
     if (!(currtouched & _BV(i)) && (lasttouched & _BV(i)) ) {
-#ifdef DEBUG
-      Serial.print(i); Serial.println(" released");
-#else
         // Play Release Note
       noteOn(0x90, 0x4A, 0x00);   //Note on channel 1 (0x90), some note value (note), silent velocity (0x00):
       delay(100);
-#endif
     }
   }
 
